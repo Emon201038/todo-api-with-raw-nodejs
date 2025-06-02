@@ -49,11 +49,11 @@ GET /todos
   "success": true,
   "data": [
     {
-      "id": "1",
-      "title": "Sample Todo",
-      "description": "This is a sample todo",
-      "completed": false,
-      "createdAt": "2024-01-01T00:00:00.000Z"
+      "id": 9826,
+      "title": "Finish React assignment",
+      "isCompleted": false,
+      "createdAt": "2025-06-02T13:18:02.878Z",
+      "updatedAt": "2025-06-02T13:18:02.879Z"
     }
   ]
 }
@@ -70,8 +70,7 @@ POST /todos
 Content-Type: application/json
 
 {
-  "title": "New Todo",
-  "description": "Todo description"
+  "title": "New Todo"
 }
 ```
 
@@ -82,8 +81,7 @@ Content-Type: application/json
 
 {
   "title": "Updated Todo",
-  "description": "Updated description",
-  "completed": true
+  "isCompleted": true
 }
 ```
 
@@ -91,6 +89,27 @@ Content-Type: application/json
 ```http
 DELETE /todos/:id
 ```
+
+## 📋 Todo Data Structure
+
+Each todo item has the following structure:
+
+```json
+{
+  "id": 9826,                                    // Unique identifier (number)
+  "title": "Finish React assignment",            // Todo title (string)
+  "isCompleted": false,                          // Completion status (boolean)
+  "createdAt": "2025-06-02T13:18:02.878Z",      // Creation timestamp (ISO string)
+  "updatedAt": "2025-06-02T13:18:02.879Z"       // Last update timestamp (ISO string)
+}
+```
+
+### Field Descriptions:
+- **id**: Auto-generated unique identifier for each todo
+- **title**: The main text/description of the todo item
+- **isCompleted**: Boolean flag indicating whether the todo is completed
+- **createdAt**: Timestamp when the todo was created
+- **updatedAt**: Timestamp when the todo was last modified
 
 ## 🧪 Testing the API
 
@@ -107,19 +126,19 @@ curl http://localhost:3000/todos
 ```bash
 curl -X POST http://localhost:3000/todos \
   -H "Content-Type: application/json" \
-  -d '{"title": "Learn Node.js", "description": "Build APIs with raw Node.js"}'
+  -d '{"title": "Learn Node.js"}'
 ```
 
 **Update a todo:**
 ```bash
-curl -X PUT http://localhost:3000/todos/1 \
+curl -X PUT http://localhost:3000/todos/9826 \
   -H "Content-Type: application/json" \
-  -d '{"title": "Learn Node.js", "description": "Build APIs with raw Node.js", "completed": true}'
+  -d '{"title": "Learn Node.js", "isCompleted": true}'
 ```
 
 **Delete a todo:**
 ```bash
-curl -X DELETE http://localhost:3000/todos/1
+curl -X DELETE http://localhost:3000/todos/9826
 ```
 
 ### Using Postman or Thunder Client
@@ -180,4 +199,3 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ⭐ If you found this project helpful, please give it a star!
 ```
-
